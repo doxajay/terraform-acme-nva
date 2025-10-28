@@ -1,11 +1,13 @@
 # Example subnet for Application VPC
 resource "aws_subnet" "app_subnet_1" {
-  vpc_id            = aws_vpc.application.id
-  cidr_block        = "10.10.1.0/24"
-  availability_zone = "${var.aws_region}a"
+  vpc_id                  = aws_vpc.application.id
+  cidr_block              = "10.10.1.0/24"
+  availability_zone       = "${var.aws_region}a"
+  map_public_ip_on_launch = true   # <— add this line
   tags = {
     Name = "${var.project_name}-app-subnet-1"
   }
+}
 }
 
 # Security Group allowing HTTP/HTTPS
