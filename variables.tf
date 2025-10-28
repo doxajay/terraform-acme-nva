@@ -12,3 +12,9 @@ variable "vpc_cidrs" {
   description = "CIDR blocks for each VPC"
   type = map(string)
 }
+variable "instance_type" {
+  description = "EC2 instance type for NGINX and other servers"
+  type        = string
+  default     = "t2.micro"
+}
+
