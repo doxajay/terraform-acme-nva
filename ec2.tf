@@ -8,7 +8,6 @@ resource "aws_subnet" "app_subnet_1" {
     Name = "${var.project_name}-app-subnet-1"
   }
 }
-}
 
 # Security Group allowing HTTP/HTTPS
 resource "aws_security_group" "nginx_sg" {
