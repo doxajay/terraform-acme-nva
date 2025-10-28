@@ -53,3 +53,15 @@ resource "aws_instance" "nginx" {
     Name = "${var.project_name}-nginx"
   }
 }
+# Allocate a static Elastic IP in the VPC
+resource "aws_eip" "nginx_eip" {
+  domain = "vpc"
+  tags = { Name = "${var.project_name}-nginx-eip" }
+}
+
+# Associate the EIP to the existing instance
+resource "aws_eip_association" "nginx_eip_assoc" {
+  instance_id   = aws_instance.nginx.id
+  allocation_id = aws_eip.nginx_eip.id
+}
+
