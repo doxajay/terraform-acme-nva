@@ -36,7 +36,7 @@ resource "aws_security_group" "nginx_sg" {
 
 # NGINX EC2 instance
 resource "aws_instance" "nginx" {
-  ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 (check region)
+    ami           = data.aws_ami.al2023.id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.app_subnet_1.id
   vpc_security_group_ids = [aws_security_group.nginx_sg.id]
